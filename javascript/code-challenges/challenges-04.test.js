@@ -102,10 +102,7 @@ CHALLENGE 8 - Stretch Goal
 Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortByLength = (arr) =>
-  arr.sort((a, b) => {
-    return a.length - b.length;
-  });
+const sortByLength = (arr) => arr.sort((a, b) => a.length - b.length);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -116,9 +113,8 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) =>
-  arr.sort((a, b) => {
-    return a.toString().length - b.toString().length;
-  });
+  arr.sort((a, b) => a.toString().length - b.toString().length);
+
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
 
@@ -143,13 +139,15 @@ const sortPeople = (arr) =>
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
 
-Write a function named sortPeopleBetter that takes in an array of Person objects, each of which has firstName, lastName, and age properties, and sorts those people by their last names.
+Write a function named sortPeopleBetter that takes in an array of Person objects, each of which has firstName, lastName, and age properties,
+
+and sorts those people by their last names.
 
 If two people share the same last name, alphabetize on their first name.
 
 If two people have the same full name, the younger one should come first. Do not worry about capitalization.
 ------------------------------------------------------------------------------------------------ */
-
+[1, 2, 3];
 const sortPeopleBetter = (arr) => {
   let sortedArray = [];
   sortedArray = sortPeople(arr);
@@ -171,9 +169,19 @@ const sortPeopleBetter = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 12 - Stretch Goal
 
-Write a function named sortMeetingsByDay that takes in an array of objects, each of which represents a meeting happening a particular day of the week, with a particular start time and end time.
+Write a function named sortMeetingsByDay that takes in an array of objects,
 
-Sort the meetings by the day on which they happen, Monday-Friday. It does not matter which order meetings come in on a particular day. For example, if there are two meetings on Monday, it does not matter which comes first.
+each of which represents a meeting happening a particular day of the week, with a particular start time and end time.
+
+Sort the meetings by
+
+the day on which they happen, Monday-Friday.
+
+It does not matter which order meetings come in on a particular day.
+
+For example,
+
+if there are two meetings on Monday, it does not matter which comes first.
 ------------------------------------------------------------------------------------------------ */
 
 function Meeting(dayOfWeek, start, end) {
@@ -189,10 +197,9 @@ const meetings = [
   new Meeting('Monday', '0900', '0945'),
   new Meeting('Friday', '1200', '1345'),
 ];
-
-const sortMeetingsByDay = (arr) => {
-  // Solution code here...
-};
+let list = ['Monday', 'Tuesday', 'Wednesday', 'Thu', 'Friday', 'Sat'];
+const sortMeetingsByDay = (arr) =>
+  arr.sort((a, b) => list.indexOf(a.dayOfWeek) - list.indexOf(b.dayOfWeek));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 13 - Stretch Goal
@@ -372,7 +379,7 @@ describe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(
@@ -396,7 +403,7 @@ xdescribe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
