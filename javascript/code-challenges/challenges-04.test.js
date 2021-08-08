@@ -403,7 +403,7 @@ describe('Testing challenge 12', () => {
   });
 });
 
-describe('Testing challenge 13', () => {
+xdescribe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
