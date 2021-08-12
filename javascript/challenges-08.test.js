@@ -6,8 +6,7 @@ CHALLENGE 1 - Review
 
 Use the characters data below for all of the challenges except challenge 2 and 3.
 
-Write a function named sortByChildren that sorts the characters below by the number of children in each house 
-(fewest to most). If a house has the same number of children, sort alphabetically by house name.
+Write a function named sortByChildren that sorts the characters below by the number of children in each house (fewest to most). If a house has the same number of children, sort alphabetically by house name.
 
 ------------------------------------------------------------------------------------------------ */
 let characters = [
@@ -55,9 +54,17 @@ let characters = [
   }
 ];
 
-const sortByChildren = (charArray) => {
-  // Solution code here...
-};
+const sortByChildren = (charArray) => charArray.sort((a, b) => {
+  if (a.children.length === b.children.length) {
+    if (a.name < b.name) {
+      return -1;
+    }
+  } else {
+    if (a.children.length < b.children.length) {
+      return -1;
+    }
+  }
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -66,9 +73,7 @@ Write a function named containsW that takes in a string. This function should us
 
 ------------------------------------------------------------------------------------------------ */
 
-const containsW = (str) => {
-  // Solution code here...
-};
+const containsW = (str) => /w/.test(str);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -82,9 +87,7 @@ For example:
 'hello world' returns false
 ------------------------------------------------------------------------------------------------ */
 
-const isNum = (input) => {
-  // Solution code here...
-};
+const isNum = (input) => /\d/.test(input);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -93,20 +96,26 @@ Write a function named containsWorld that takes in a string or number of any len
 
 ------------------------------------------------------------------------------------------------ */
 
-const containsWorld = (input) => {
-  // Solution code here...
-};
+
+const containsWorld = (input) => /world/.test(input);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named isCapitalized that takes in a string. This function should use a regular expression pattern to match all words that begin with a capital letter. It should only match words, not punctuation.
+Write a function named isCapitalized that takes in a string. 
+This function should use a regular expression pattern to match all words that begin with a capital letter. 
+It should only match words, not punctuation.
 
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let result = str.match(/(\b[A-Z].*?\b(.)??)/g);
+  if (result) {
+    return result;
+  } else {
+    return [];
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,9 +124,9 @@ CHALLENGE 6
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
-const citiesAtoJ = (arr) => {
-  // Solution code here...
-};
+const citiesAtoJ = (arr) => arr.filter((element) => { if (element.match( /(^[A-J])\w+/)){return element.match( /(^[A-J])\w+/) }});
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
