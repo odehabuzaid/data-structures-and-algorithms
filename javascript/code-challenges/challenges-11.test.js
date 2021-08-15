@@ -66,19 +66,13 @@ This function should then raise 2 to the power of the resulting numbers, returni
 
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
-
 const divisibleByFiveTwoToThePower = (input) =>
   input.map(value =>
     value.filter(number =>
-      !(number % 5)))
-    .map(value =>
-      value.filter(number =>
-        typeof number !== 'string'))
+      !(number % 5) && typeof number !== 'string'))
     .map(value =>
       value.map(number =>
         Math.pow(2, number)));
-
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -146,8 +140,6 @@ let findMaleAndFemale = (data) =>
     character.gender === 'male' || character.gender === 'female')
     .map((character) =>
       character.name).join(' and ');
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
