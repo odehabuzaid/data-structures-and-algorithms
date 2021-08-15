@@ -8,7 +8,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str) {
-  return str.split("").splice(str.length - 10, str.length);
+  return str.split("").splice(-10)
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,10 +82,14 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
-const grandTotal = (stores) => stores.reduce((acc, cur) => {
-    cur.forEach((currentItem, index) => (acc[index] = (acc[index] || 0) + currentItem));
-    return acc}, [])
-  
+const grandTotal = (stores) =>
+  stores.reduce((acc, cur) => {
+    cur.forEach(
+      (currentItem, index) => (acc[index] = (acc[index] || 0) + currentItem)
+    );
+    return acc;
+  }, [])
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -96,8 +100,14 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
-const salesData = (hours, data) => hours.map((time, index) => ({sales: `${data[index]} cookies`,time: time}))
-
+const salesData = (hours, data) => {
+  let items = [];
+  hours.forEach((time, index) => {
+    let obj = { sales: `${data[index]} cookies`, time: time };
+    items.push(obj);
+  });
+  return items;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -135,7 +145,38 @@ const errands = [
   },
 ];
 
-const howManyTreats = (arr) => 24;
+// const howManyTreats = (arr) => 24
+
+// const howManyTreats = (arr) =>
+// arr.reduce((acc, cur) =>
+// cur.store === 'Pet store' ? acc = cur : acc, {}).items.reduce((acc, cur) =>
+// cur.name === 'Treats' ? acc = cur : acc, {}).quantity
+
+// const howManyTreats = (arr) => {
+//   let tobuy = 0;
+//   for (let i of arr) {
+//     if (i.store === 'Pet store') {
+//       i.items.find((item) => {
+//         if (item.name === 'Treats') {
+//           tobuy = item.quantity;
+//         }
+//       });
+//     }
+//   }
+//   return tobuy;
+// };
+
+const howManyTreats = (arr) =>
+  arr.find((location) => {
+    if (location.store === "Pet store") {
+      return location.items.find((item) => {
+        if (item.name === "Treats") {
+          return item.quantity;
+        }
+      })
+    }
+  })
+  
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
