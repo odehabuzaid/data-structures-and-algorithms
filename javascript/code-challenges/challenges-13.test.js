@@ -83,8 +83,8 @@ const allHappy = (arr) =>
     (i.includes(':)'))? true : false).includes('false')
   &&
 !arr.map(i =>
-  (i.includes(':)')))? true : false).includes('false')
-  );
+  (i.includes(':)')))? true : false).includes('false');
+
 
 
 
