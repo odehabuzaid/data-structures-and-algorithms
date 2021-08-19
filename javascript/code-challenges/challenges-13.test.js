@@ -72,18 +72,29 @@ const onlyOddChars = (str) =>
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
+Write a function named allHappy that takes in an array of
+strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
 // const allHappy = (arr) => (arr.map((i) =>
 //   (i.includes(':)')? true: false)).includes('false'))? true : false;
 
+// let result;
+// const allHappy = (arr) => arr.forEach((item) =>{
+//   result = ()=> (/:\)/.test(item) ? item : item = false, true);
+//   return result;
+// let regex = /:\)/;
+// return regex.test(url);
+// });
+
+// onst allHappy = (arr) => arr.map(item => (/^:\)/.test(item) ? item : item = false, true));
+
+
 const allHappy = (arr) =>
-  (arr.filter(i =>
-    (i.includes(':)'))? true : false).includes('false')
-  &&
-!arr.map(i =>
-  (i.includes(':)')))? true : false).includes('false');
+  !arr.map(val =>
+    /:\)/gm.test(val)).includes(false);
+
+ 
 
 
 
