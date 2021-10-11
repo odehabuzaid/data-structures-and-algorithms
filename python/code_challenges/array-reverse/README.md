@@ -1,1 +1,1 @@
-![array-reverse](./array-reverse.png)
+<img src="./array-reverse.PNG" alt="array-reverse">
