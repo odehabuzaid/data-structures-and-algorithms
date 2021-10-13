@@ -7,5 +7,5 @@
 ## Approach & Efficiency
 i will search the key with recursion, so i can practice more on recirsion
 
-> *time <- O(1) if midIdx == search_key.value() <br>*
+> *time <- O(1) if array[midIdx] == search_key.value() <br>*
 > *space <- O(log n)*
