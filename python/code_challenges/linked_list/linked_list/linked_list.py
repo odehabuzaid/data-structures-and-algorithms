@@ -16,7 +16,7 @@ class Node:
       self.data = data
       self.next = None
   def __str__(self):
-    return '{%s}' % self.data
+    return '%s' % self.data
   
 class LinkedList:
   """
@@ -61,6 +61,7 @@ class LinkedList:
         node = node.next
     nodes.append("Null")
     return " -> ".join(nodes)
+
   
   def __iter__(self):
     """
@@ -85,7 +86,6 @@ class LinkedList:
     arguments: value : any
     returns: None
     """
-    
     node.next = self.head
     self.head = node
   
@@ -105,3 +105,24 @@ class LinkedList:
             return True
     else: 
       return False
+  
+  def collect(self):
+    """
+    going through every single node, 
+    starting with the head of the linked list and 
+    ending on the node that has a next value of None.
+
+    appends nodes data to a list 
+    
+    returns a collection of all the values exists
+    """
+    if self.head is None:
+      raise Exception("List is empty")
+
+    collection = []
+    node = self.head
+    while node is not None:
+        collection.append(node.data)
+        node = node.next
+    
+    return collection

@@ -8,7 +8,7 @@ if __name__ == "__main__":
     # insert a Node with value('z') into the linkedList
     linkedlist.insert(Node("z"))
     print(linkedlist)  # {z} -> Null
-
+    
     # modifing node positions wiht next
     nod1 = Node("a") # {a} -> Null
     node2 = Node("b") # {b} -> Null
@@ -22,7 +22,9 @@ if __name__ == "__main__":
     linkedlist.insert(node2)
     linkedlist.insert(node3)
     print(linkedlist)  # {c} -> {b} -> {a} -> {z} -> Null
-
+    # The head point to the first node in the linked list
+    print()
+    print(linkedlist.head)
     # iterate and return values
     # for node in linkedlist:
     #   print(node.data)   
@@ -33,14 +35,14 @@ if __name__ == "__main__":
     # z
     # aslo : 
     print(*linkedlist)  # {c} {b} {a} {z}
-
-
+    
+    
     # creating and iterating iterable inside a linked list
     arr = ["1", "2", "3", "4", "5"]
     iter_values = LinkedList(arr)
     
     print(iter_values) # {1} -> {2} -> {3} -> {4} -> {5} -> Null
-
+    
     for node in iter_values:
         print(node.data)
 
@@ -52,7 +54,7 @@ if __name__ == "__main__":
     4
     5
     """
-
+    
     print(linkedlist.includes("a"))   # True
     print(linkedlist.includes("c"))   # True
     
@@ -62,7 +64,7 @@ if __name__ == "__main__":
     
     
     linkedlist.insert(Node([1,2,3]))
-
+    
     for node in linkedlist:
         print(node.data)
     
@@ -74,3 +76,4 @@ if __name__ == "__main__":
     a
     z
     """
+    print(linkedlist.collect())
