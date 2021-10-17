@@ -1,4 +1,4 @@
-# Daily Code Challenge 
+# Daily Code Challenge
 
 ## linked list
 *Author: Odeh Abuzaid*
@@ -12,12 +12,28 @@ Create a Node class that has properties for the value stored in the Node, and a 
 
 ### Inputs and Expected Outputs
 
-example : 
+example :
 ```py
 arr = ["1", "2", "3", "4", "5"]
 iter_values = LinkedList(arr)
 
 print(iter_values) # {1} -> {2} -> {3} -> {4} -> {5} -> Null
+```
+
+extended :
+```py
+# list head -> [1] -> [3] -> [2] -> X
+
+linkedList.append(5)
+
+# head -> [1] -> [3] -> [2] -> [5] -> X
+
+# head -> [1] -> [3] -> [2] -> X
+linkedList.insert_before(3, 5)
+
+# head -> [1] -> [5] -> [3] -> [2] -> X
+
+# ...
 ```
 ---
 
@@ -33,7 +49,7 @@ print(iter_values) # {1} -> {2} -> {3} -> {4} -> {5} -> Null
 ***
 14.oct 2021 first commit
 
-16.oct 2021  
+16.oct 2021
 
 - fixed : includes method that indicates whether that value exists as a Node’s value somewhere within the list.
 
@@ -41,6 +57,17 @@ print(iter_values) # {1} -> {2} -> {3} -> {4} -> {5} -> Null
 - fixed : test import links.
 - added : tests that met with all requirements.
 - added : `__iter__`  to LinkedList :   yields every single node.
-- added : `__main__` :   Verify & Validate Requirements 
+- added : `__main__` :   Verify & Validate Requirements
 - added : `collect`  :   returns a collection of all the values exists
+
+17.oct 2021
+
+    Extended Linked List allow various insertion methods.
+- fixed : nodes by Value
+- added : `append` a node at the end
+- added : `insert_after` insert a node after value
+- added : `insert_before` insert a node before value
+- added : `get_node` return a `<Node>` of value
+- added : `delete` removes a `<Node>` by value
+- added : `delete_all_nodes` removes all Nodes
 ---
