@@ -159,6 +159,14 @@ class LinkedList:
 
         return collection
     def delete(self, value):
+        """
+        deletes a node of a given value from linkedlist
+        Args:
+            value ([type:any]): Node to be deleted value
+
+        Raises:
+            Exception: if there is no node with the given value raise an Exception
+        """
         if self.includes(value):
             arr = self.collect()
             arr.remove(value)
@@ -167,14 +175,25 @@ class LinkedList:
         else:
             raise Exception('Value is not in the list')
     def get_node(self, value):
+        """
+        gets a Node of a specific value
+
+        TODO: [ ] return a tuple in case there is more than a node of a same given value
+
+        Args:
+            value ([type:any]): value of the node to return
+
+        Returns:
+            [<Node>]
+        """
         current = self.head
         while (current):
             if (current.data == value):
                 return current
             current = current.next
     def delete_all_nodes(self):
+        """
+        removes all Nodes
+        """
         while (self.head != None):
             self.head = self.head.next
-
-
-
