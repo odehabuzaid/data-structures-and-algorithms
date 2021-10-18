@@ -70,4 +70,7 @@ linkedList.insert_before(3, 5)
 - added : `get_node` return a `<Node>` of value
 - added : `delete` removes a `<Node>` by value
 - added : `delete_all_nodes` removes all Nodes
+- added : `kth_from_end` Return the node’s value that is k as argument places from the tail of the linked list.
 ---
+
+

@@ -197,3 +197,13 @@ class LinkedList:
         """
         while (self.head != None):
             self.head = self.head.next
+    def kth_from_end(self,k):
+        current = self.tail
+        count = 0
+        while (current):
+            if count == k:
+                return current.data
+            count+=1
+            current = current.previous
+        else:
+            raise Exception('No Data Found for the givin index')

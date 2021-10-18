@@ -178,6 +178,37 @@ def test_linked_list_insert_after_last_node():
     # Assert
     assert expected == actual
 
+# Where k is greater than the length of the linked list
+# Where k and the length of the list are the same
+# Where k is not a positive integer
+# Where the linked list is of a size 1
+# “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+
+
+def test_linked_list_k_greater_than_length():
+    with pytest.raises(Exception):
+        linkedlist.kth_from_end(15)
+
+def test_linked_list_k_equals_than_length():
+    with pytest.raises(Exception):
+        linkedlist.kth_from_end(10)
+
+def test_linked_list_k_is_negativ():
+    with pytest.raises(Exception) :
+         linkedlist.kth_from_end(-1)
+
+def test_linked_list_of_size_one():
+    # Arrange
+    linkedlist = LinkedList()
+    linkedlist.insert(1)
+    with pytest.raises(Exception) :
+         linkedlist.kth_from_end(1)
+
+@pytest.mark.skip
+def test_linked_list_k_in():
+    with pytest.raises(Exception) as e:
+        linkedlist.kth_from_end(2)
+    assert e == "DID NOT RAISE <class 'Exception'>"
 
 
 @pytest.fixture(autouse=True)
@@ -199,7 +230,3 @@ def test_linked_list_delete_value():
     # Assert
     assert expected == actual
 
-# def test_linked_list_delete_value_not_in_list():
-#     with pytest.raises(Exception) as e:
-#         linkedlist.delete('Node')
-#     assert e == 'Value is not in the list'
