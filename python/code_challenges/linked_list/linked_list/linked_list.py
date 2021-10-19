@@ -1,3 +1,6 @@
+import pysnooper
+
+
 class Node:
     """
     A class representing a Node
@@ -37,7 +40,7 @@ class LinkedList:
         Args:
             nodes (any, optional): Defaults to None.
         """
-        self.head = None # Initally there are no elements in the list
+        self.head = None
         self.tail = None
     def __repr__(self):
         """
@@ -67,53 +70,66 @@ class LinkedList:
         while node is not None:
             yield node
             node = node.next
-    def insert(self, value=1):
+    def insert(self, value=None):
         """
         Adds a new node with that value to the head of the list with an O(1) Time performance.
 
         arguments: value : any
         returns: None
         """
+        node = value
+        if type(value) != "class 'linked_list.Node'":
+            node = Node(value)
 
-        node = Node(value)
-        node.next = self.head
-        if self.head != None:
+        if self.head:
+            node.next = self.head
             self.head.previous = node
             self.head = node
-            node.previous = None
+            self.head.previous = None
+        else:
+            self.head = node
+            self.head.previous = None
+            self.tail = self.head
+            self.tail.next = None
+        return self
 
-        else:
-            self.head = node
-            self.tail = node
-            node.previous = None
-    def append(self, value=1):
-        node = Node(value)
-        node.previous = self.tail
-        if self.tail == None:
-            self.head = node
-            self.tail = node
-            node.next = None
-        else:
+    # @pysnooper.snoop()
+    def append(self, value=None):
+        node = value
+        if type(value) != "class 'linked_list.Node'":
+            node = Node(value)
+
+        if self.tail:
+            node.next = self.tail.next
+            temp = self.tail
             self.tail.next = node
-            node.next = None
             self.tail = node
-
+            self.tail.next = None
+            self.tail.previous = temp
+        else:
+            self.head = node
+            self.head.previous = None
+            self.tail = self.head
+            self.tail.next = None
+        return self
     def insert_after(self, after_node, value):
+        new_node = value
+        if type(new_node) != "class 'linked_list.Node'":
+            new_node = Node(value)
+
         node = self.get_node(after_node)
-        new_node = Node(value)
-
-        new_node.next = node.next
-        node.next = new_node
-        new_node.previous = node
-        if new_node.next != None:
-            new_node.next.previous = new_node
-        # checks if new node is being added to the last element nad makes new node the new tail
         if node == self.tail:
-            self.tail = new_node
+            self.append(new_node)
+        else:
+            new_node.next = node.next
+            new_node.next.previous = new_node
+            node.next = new_node
+            new_node.previous = node
     def insert_before(self, before_node, value):
+        new_node = value
+        if type(value) != "class 'linked_list.Node'":
+            new_node = Node(value)
         node = self.get_node(before_node)
-        new_node = Node(value)
-
         new_node.previous = node.previous
         node.previous = new_node
         new_node.next = node
@@ -198,6 +214,11 @@ class LinkedList:
         while (self.head != None):
             self.head = self.head.next
     def kth_from_end(self,k):
+        list_length = len([node for node in self])
+        if k >= list_length : raise Exception('Givin value is greater than list length')
+        if (k + abs(k)) == 0 and k != 0 : raise Exception('Givin value is Negativ')
+        if (list_length) == 1 : raise Exception('List Size is 1')
+
         current = self.tail
         count = 0
         while (current):
@@ -207,3 +228,6 @@ class LinkedList:
             current = current.previous
         else:
             raise Exception('No Data Found for the givin index')
+    def get_mid_node(self):
+        mid = len([node for node in self]) // 2
+        return self.kth_from_end(mid)
