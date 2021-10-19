@@ -1,5 +1,3 @@
-import pysnooper
-
 
 class Node:
     """
