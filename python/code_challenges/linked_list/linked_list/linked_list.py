@@ -219,7 +219,7 @@ class LinkedList:
 
         current = self.tail
         count = 0
-        while (current):
+        while current:
             if count == k:
                 return current.data
             count+=1
@@ -229,3 +229,22 @@ class LinkedList:
     def get_mid_node(self):
         mid = len([node for node in self]) // 2
         return self.kth_from_end(mid)
+    def zip_lists(self,list_1,list_2):
+        # head -> [1] -> [3] -> [2] -> X
+        # head -> [5] -> [9] -> [4] -> X
+        # head -> [1] -> [5] -> [3] -> [9] -> [2] -> [4] -> X
+        nodes = list_1.head
+        nextnodes = list_2.head
+        self.insert(list_1.head)
+        while nodes is not None and nextnodes is not None:
+            self.append(nextnodes.data)
+            self.append(nodes.next)
+            nextnodes = nextnodes.next
+            nodes = nodes.next
+        self.tail = self.tail.previous
+        self.tail.next = None
+        self.tail.previous = self.tail.previous.previous
+
+
+
+        return self
