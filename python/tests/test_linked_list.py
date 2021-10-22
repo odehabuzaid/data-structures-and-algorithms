@@ -193,9 +193,11 @@ def test_linked_list_k_equals_than_length():
     with pytest.raises(Exception):
         linkedlist.kth_from_end(10)
 
+
 def test_linked_list_k_is_negativ():
     with pytest.raises(Exception) :
          linkedlist.kth_from_end(-1)
+
 
 def test_linked_list_of_size_one():
     # Arrange
@@ -204,11 +206,27 @@ def test_linked_list_of_size_one():
     with pytest.raises(Exception) :
          linkedlist.kth_from_end(1)
 
-@pytest.mark.skip
-def test_linked_list_k_in():
-    with pytest.raises(Exception) as e:
-        linkedlist.kth_from_end(2)
-    assert e == "DID NOT RAISE <class 'Exception'>"
+
+def test_linked_list_zip_lists():
+     # Arrange
+    expected = '{1} -> {5} -> {3} -> {9} -> {2} -> {4} -> Null'
+
+    list_1 = LinkedList()
+    list_1.append(1)
+    list_1.append(3)
+    list_1.append(2)
+
+    list_2 = LinkedList()
+    list_2.append(5)
+    list_2.append(9)
+    list_2.append(4)
+
+    ll = LinkedList()
+    ll.zip_lists(list_1,list_2)
+    actual = ll
+
+    assert expected == actual.__str__()
+
 
 
 @pytest.fixture(autouse=True)
@@ -216,6 +234,11 @@ def clean():
     linkedlist.delete_all_nodes()
     for i in range(10):
         linkedlist.insert(i)
+
+
+
+
+
 
 ######################
 #Stretch
