@@ -68,6 +68,7 @@ class LinkedList:
         while node is not None:
             yield node
             node = node.next
+
     def insert(self, value=None):
         """
         Adds a new node with that value to the head of the list with an O(1) Time performance.
@@ -92,6 +93,7 @@ class LinkedList:
         return self
 
     # @pysnooper.snoop()
+
     def append(self, value=None):
         node = value
         if type(value) != "class 'linked_list.Node'":
@@ -212,6 +214,7 @@ class LinkedList:
         while (self.head != None):
             self.head = self.head.next
     def kth_from_end(self,k):
+
         list_length = len([node for node in self])
         if k >= list_length : raise Exception('Givin value is greater than list length')
         if (k + abs(k)) == 0 and k != 0 : raise Exception('Givin value is Negativ')
@@ -230,9 +233,6 @@ class LinkedList:
         mid = len([node for node in self]) // 2
         return self.kth_from_end(mid)
     def zip_lists(self,list_1,list_2):
-        # head -> [1] -> [3] -> [2] -> X
-        # head -> [5] -> [9] -> [4] -> X
-        # head -> [1] -> [5] -> [3] -> [9] -> [2] -> [4] -> X
         nodes = list_1.head
         nextnodes = list_2.head
         self.insert(list_1.head)
@@ -244,7 +244,5 @@ class LinkedList:
         self.tail = self.tail.previous
         self.tail.next = None
         self.tail.previous = self.tail.previous.previous
-
-
 
         return self
