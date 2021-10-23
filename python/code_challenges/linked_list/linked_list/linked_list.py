@@ -90,7 +90,6 @@ class LinkedList:
             self.head.previous = None
             self.tail = self.head
             self.tail.next = None
-        return self
 
     def append(self, value=None):
         node = value
