@@ -37,14 +37,12 @@ linkedList.insert_before(3, 5)
 ```
 ---
 
-### Big O
-
-| Time | Space |
-| :----------- | :----------- |
-| O(n) | O(n) |
+## *WhiteBoard updates*
+<br>
+<img src="./WB/1.JPG" alt="Linked-List-White-Board">
+<img src="./WB/2.JPG" alt="Linked-List-White-Board" style='margin-top:-10px'>
 
 ---
-
 ### Change Log
 ***
 14.oct 2021 first commit

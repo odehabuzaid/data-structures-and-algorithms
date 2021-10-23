@@ -90,9 +90,7 @@ class LinkedList:
             self.head.previous = None
             self.tail = self.head
             self.tail.next = None
-        return self
 
-    # @pysnooper.snoop()
 
     def append(self, value=None):
         node = value
@@ -111,7 +109,7 @@ class LinkedList:
             self.head.previous = None
             self.tail = self.head
             self.tail.next = None
-        return self
+
     def insert_after(self, after_node, value):
         new_node = value
         if type(new_node) != "class 'linked_list.Node'":
@@ -125,20 +123,23 @@ class LinkedList:
             new_node.next.previous = new_node
             node.next = new_node
             new_node.previous = node
+
     def insert_before(self, before_node, value):
         new_node = value
         if type(value) != "class 'linked_list.Node'":
             new_node = Node(value)
+
         node = self.get_node(before_node)
+
+        if node == self.head:
+            self.insert(new_node)
+            return
+
         new_node.previous = node.previous
+        node.previous.next = new_node
         node.previous = new_node
         new_node.next = node
 
-        if new_node.previous != None:
-            new_node.previous.next = new_node
-
-        if node == self.head:
-            self.head = new_node
     def includes(self, data):
         """
         Indicates whether that value exists as a Node’s value somewhere within the list.
@@ -154,6 +155,7 @@ class LinkedList:
                 return True
         else:
             return False
+
     def collect(self):
         """
         going through every single node,
@@ -174,6 +176,7 @@ class LinkedList:
             node = node.next
 
         return collection
+
     def delete(self, value):
         """
         deletes a node of a given value from linkedlist
@@ -190,6 +193,7 @@ class LinkedList:
             for i in arr:self.insert(i)
         else:
             raise Exception('Value is not in the list')
+
     def get_node(self, value):
         """
         gets a Node of a specific value
@@ -207,12 +211,14 @@ class LinkedList:
             if (current.data == value):
                 return current
             current = current.next
+
     def delete_all_nodes(self):
         """
         removes all Nodes
         """
         while (self.head != None):
             self.head = self.head.next
+
     def kth_from_end(self,k):
 
         list_length = len([node for node in self])
@@ -229,9 +235,11 @@ class LinkedList:
             current = current.previous
         else:
             raise Exception('No Data Found for the givin index')
+
     def get_mid_node(self):
         mid = len([node for node in self]) // 2
         return self.kth_from_end(mid)
+
     def zip_lists(self,list_1,list_2):
         nodes = list_1.head
         nextnodes = list_2.head
