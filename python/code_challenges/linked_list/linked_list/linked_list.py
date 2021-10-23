@@ -68,6 +68,7 @@ class LinkedList:
         while node is not None:
             yield node
             node = node.next
+
     def insert(self, value=None):
         """
         Adds a new node with that value to the head of the list with an O(1) Time performance.
@@ -91,7 +92,6 @@ class LinkedList:
             self.tail.next = None
         return self
 
-    # @pysnooper.snoop()
     def append(self, value=None):
         node = value
         if type(value) != "class 'linked_list.Node'":
@@ -109,7 +109,7 @@ class LinkedList:
             self.head.previous = None
             self.tail = self.head
             self.tail.next = None
-        return self
+
     def insert_after(self, after_node, value):
         new_node = value
         if type(new_node) != "class 'linked_list.Node'":
@@ -123,20 +123,23 @@ class LinkedList:
             new_node.next.previous = new_node
             node.next = new_node
             new_node.previous = node
+
     def insert_before(self, before_node, value):
         new_node = value
         if type(value) != "class 'linked_list.Node'":
             new_node = Node(value)
+
         node = self.get_node(before_node)
+
+        if node == self.head:
+            self.insert(new_node)
+            return
+
         new_node.previous = node.previous
+        node.previous.next = new_node
         node.previous = new_node
         new_node.next = node
 
-        if new_node.previous != None:
-            new_node.previous.next = new_node
-
-        if node == self.head:
-            self.head = new_node
     def includes(self, data):
         """
         Indicates whether that value exists as a Node’s value somewhere within the list.
@@ -152,6 +155,7 @@ class LinkedList:
                 return True
         else:
             return False
+
     def collect(self):
         """
         going through every single node,
@@ -172,6 +176,7 @@ class LinkedList:
             node = node.next
 
         return collection
+
     def delete(self, value):
         """
         deletes a node of a given value from linkedlist
@@ -188,6 +193,7 @@ class LinkedList:
             for i in arr:self.insert(i)
         else:
             raise Exception('Value is not in the list')
+
     def get_node(self, value):
         """
         gets a Node of a specific value
@@ -205,34 +211,35 @@ class LinkedList:
             if (current.data == value):
                 return current
             current = current.next
+
     def delete_all_nodes(self):
         """
         removes all Nodes
         """
         while (self.head != None):
             self.head = self.head.next
-    def kth_from_end(self,k):
-        list_length = len([node for node in self])
-        if k >= list_length : raise Exception('Givin value is greater than list length')
-        if (k + abs(k)) == 0 and k != 0 : raise Exception('Givin value is Negativ')
-        if (list_length) == 1 : raise Exception('List Size is 1')
 
+    def kth_from_end(self,k):
         current = self.tail
         count = 0
+        value = None
         while current:
             if count == k:
-                return current.data
+                value = current.data
             count+=1
             current = current.previous
-        else:
-            raise Exception('No Data Found for the givin index')
+
+        if k >= count : raise Exception('Given value is greater than list length')
+        if count == 1 : raise Exception('List has only one node')
+        if k + abs(k) == 0 and k != 0 : raise Exception('Given value is Negativ')
+
+        return value
+
     def get_mid_node(self):
         mid = len([node for node in self]) // 2
         return self.kth_from_end(mid)
+
     def zip_lists(self,list_1,list_2):
-        # head -> [1] -> [3] -> [2] -> X
-        # head -> [5] -> [9] -> [4] -> X
-        # head -> [1] -> [5] -> [3] -> [9] -> [2] -> [4] -> X
         nodes = list_1.head
         nextnodes = list_2.head
         self.insert(list_1.head)
@@ -244,7 +251,5 @@ class LinkedList:
         self.tail = self.tail.previous
         self.tail.next = None
         self.tail.previous = self.tail.previous.previous
-
-
 
         return self
