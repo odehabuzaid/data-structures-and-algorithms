@@ -220,21 +220,20 @@ class LinkedList:
             self.head = self.head.next
 
     def kth_from_end(self,k):
-
-        list_length = len([node for node in self])
-        if k >= list_length : raise Exception('Givin value is greater than list length')
-        if (k + abs(k)) == 0 and k != 0 : raise Exception('Givin value is Negativ')
-        if (list_length) == 1 : raise Exception('List Size is 1')
-
         current = self.tail
         count = 0
+        value = None
         while current:
             if count == k:
-                return current.data
+                value = current.data
             count+=1
             current = current.previous
-        else:
-            raise Exception('No Data Found for the givin index')
+
+        if k >= count : raise Exception('Given value is greater than list length')
+        if count == 1 : raise Exception('List has only one node')
+        if k + abs(k) == 0 and k != 0 : raise Exception('Given value is Negativ')
+
+        return value
 
     def get_mid_node(self):
         mid = len([node for node in self]) // 2

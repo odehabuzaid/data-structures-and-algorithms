@@ -41,6 +41,7 @@ linkedList.insert_before(3, 5)
 <br>
 <img src="./WB/1.JPG" alt="Linked-List-White-Board">
 <img src="./WB/2.JPG" alt="Linked-List-White-Board" style='margin-top:-10px'>
+<img src="./WB/kth_end.JPG" alt="Linked-List-White-Board" style='margin-top:-10px'>
 
 ---
 ### Change Log
