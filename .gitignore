@@ -142,9 +142,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-__pycache__/
-__pycache__
-
+board.ipynb
 
 *.pyc
 *.pyo
