@@ -7,5 +7,6 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        self.previous
+    def __str__(self):
+        return '%s' % self.data
 
