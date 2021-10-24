@@ -35,6 +35,33 @@ class Stack:
 
     def __init__(self):
         self.top = None
+    def __repr__(self):
+        """
+        a string representing all the values in the Stack
+
+        Returns:
+            string: formated as  "{ a } -> { b } -> { c } -> NULL"
+        """
+        node = self.top
+        nodes = []
+        while node is not None:
+            nodes.append('{%s}' % node.data)
+            node = node.next
+        nodes.append("Null")
+        return " -> ".join(nodes)
+
+    def __iter__(self):
+        """
+        going through every single node,
+        starting with the top of the stack and
+        ending on the node that has a next value of None.
+
+        yields every single node.
+        """
+        node = self.top
+        while node is not None:
+            yield node
+            node = node.next
 
     def push(self, value):
         node = Node(value)
@@ -47,7 +74,7 @@ class Stack:
         self.top = self.top.next
         return pop
 
-    def peak(self):
+    def peek(self):
         if self.is_empty(): self.exception("The stack is Empty")
         return self.top.data
 
@@ -56,3 +83,17 @@ class Stack:
 
     def exception(self,reason):
         raise Exception(reason)
+
+s = Stack()
+print(s.is_empty())
+
+for i in range(10):
+    s.push(i)
+
+print(s)
+
+print(s.pop())
+print(s.peek())
+print(s.pop())
+print(s.peek())
+print(s.is_empty())
