@@ -9,47 +9,21 @@ Author: Odeh Abuzaid
 Using a Linked List as the underlying data storage mechanism, implement both a Stack and a Queue
 
 ---
-
-### Inputs and Expected Outputs
-
-example :
-```py
-
-```
-
-extended :
-```py
-# list head -> [1] -> [3] -> [2] -> X
-
-linkedList.append(5)
-
-# head -> [1] -> [3] -> [2] -> [5] -> X
-
-# head -> [1] -> [3] -> [2] -> X
-linkedList.insert_before(3, 5)
-
-# head -> [1] -> [5] -> [3] -> [2] -> X
-
-# ...
-```
----
-White Board
-
-
-
-<br>
----
 ### Big O
+
+For Both Stack Class and Queue Class Methods.
 
 | Time | Space |
 | :----------- | :----------- |
-| O(n) | O(n) |
+| O(1) | O(1) |
 
 ---
 
 ### Change Log
 ***
 21.oct 2021 first commit
+
+24.oct 2021 Test added
 
 
 
