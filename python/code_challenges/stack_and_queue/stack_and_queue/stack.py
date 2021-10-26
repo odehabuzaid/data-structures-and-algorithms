@@ -1,4 +1,4 @@
-from stack_and_queue.node import Node
+from node import Node
 
 
 class Stack:
@@ -84,16 +84,4 @@ class Stack:
     def exception(self,reason):
         raise Exception(reason)
 
-s = Stack()
-print(s.is_empty())
 
-for i in range(10):
-    s.push(i)
-
-print(s)
-
-print(s.pop())
-print(s.peek())
-print(s.pop())
-print(s.peek())
-print(s.is_empty())
