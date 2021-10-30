@@ -1,4 +1,7 @@
-def valdid_bracketss(in_string):
+import re
+
+
+def validate_brackets(in_string):
     oc_pairs = dict(zip('({[',')}]'))
     c_values = list()
     for key in in_string:
@@ -12,13 +15,13 @@ def valdid_bracketss(in_string):
     return not c_values
 
 
-print(valdid_bracketss('{}(){}') )
-print(valdid_bracketss('{}') )
-print(valdid_bracketss('(){}[[]]') )
-print(valdid_bracketss('{}{Code}[Fellows](())') )
-print(valdid_bracketss('()[[Extra Characters]]') )
+print(validate_brackets('{}(){}') )
+print(validate_brackets('{}') )
+print(validate_brackets('(){}[[]]') )
+print(validate_brackets('{}{Code}[Fellows](())') )
+print(validate_brackets('()[[Extra Characters]]') )
 print('='*10)
-print(valdid_bracketss('{(})') )
-print(valdid_bracketss('(](') )
-print(valdid_bracketss('{{} )]') )
-print(valdid_bracketss('[({}]') )
+print(validate_brackets('{(})') )
+print(validate_brackets('(](') )
+print(validate_brackets('{{} )]') )
+print(validate_brackets('[({}]') )
