@@ -1,5 +1,5 @@
 
-from stack import Stack
+from .stack import Stack
 
 
 class PseudoQueue:
@@ -38,17 +38,16 @@ class PseudoQueue:
     def enqueue(self, item):
         self.first_stack.push(item)
 
+        return self.first_stack.top
+
     def dequeue(self):
         if not self.first_stack.is_empty():
             while self.first_stack.top:
                 self.second_stack.push(self.first_stack.pop())
 
+            self.second_stack.pop()
+
             while self.second_stack.top:
                 self.first_stack.push(self.second_stack.pop())
-
-        return self.second_stack.pop()
-
-
-
 
 
