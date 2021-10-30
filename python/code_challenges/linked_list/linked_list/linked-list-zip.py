@@ -1,29 +1,27 @@
-from linked_list import LinkedList, Node
-
-
 def zip_lists(list_1,list_2):
-    first_current = list_1.head
-    second_current = list_2.head
+        first = list_1.head
+        second = list_2.head
 
-    while first_current.next:
-        temp1 = first_current.next
-        temp2 = second_current.next
+        while second.next:
+            if first != None:
+                temp_1 = first.next
+                first.next = second
+                first.previous = second.previous
+                second.previous = first
 
-        first_current.next = second_current
-        second_current.next = temp1
-        temp1.previous = second_current
-        second_current.previous = first_current
+            if second != None:
+                temp2 = second.next
+                second.next = temp_1 if temp_1 else temp2
 
+            if temp_1 == list_1.tail and  temp2 == list_2.tail:
+                temp_1.previous = second
+                temp_1.next = temp2
+                temp2.previous = temp_1
 
-        first_current = temp1
-        second_current = temp2
+            first = temp_1
+            second = temp2
 
-    list_1.tail = list_2.tail
+        list_1.tail = temp2
+        return list_1
 
-
-    return list_1
-
-
-if __name__ == "__main__":
-    pass
 
