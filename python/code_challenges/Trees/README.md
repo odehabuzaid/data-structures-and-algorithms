@@ -2,11 +2,14 @@
 ## Challenge
 ### <ins>*Binary Tree and BST Implementation*
 
+- extended
+#### <ins>*max_value method*
+
+## Whiteboard Process
 
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-## API
-<!-- Description of each method publicly available in each of your trees -->
-[PR](https://github.com/odehabuzaid/trees/pull/1)
+## Solution
+<!-- Show how to run your code, and examples of it in action -->
