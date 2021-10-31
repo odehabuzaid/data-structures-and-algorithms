@@ -94,6 +94,7 @@ class BSTree(Tree):
             value ([any]): the value of the new node to add
 
         """
+
         node = Node(value)
         if not self.root:
             self.root = node
@@ -112,15 +113,12 @@ class BSTree(Tree):
 
         if not self.last.left:
             self.last.left = node
-            self.last = node
             return
 
         if not self.last.right:
             self.last.right = node
-            self.last = node
 
-
-
+        self.last = node
 
 
     def contains(self,value):
@@ -138,6 +136,14 @@ class BSTree(Tree):
 
 
         return True if value in items else False
+
+    def maximum(self):
+
+        if not self.root: exception('Its fall in here , no leafs in this tree')
+
+
+
+
 
 
 def exception(reason):
