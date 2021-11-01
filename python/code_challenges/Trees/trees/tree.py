@@ -1,13 +1,13 @@
+
 from .node import Node
 
 
-class Tree:
+class Tree(Node):
     """
 
     """
     def __init__(self):
         self.root = None
-
     def __repr__(self):
         """
         a string representing all the values in the Stack
@@ -18,7 +18,7 @@ class Tree:
         node = self.root
         nodes = []
         while node is not None:
-            nodes.append('{%s}' % node.value)
+            nodes.append('{%s}' % node.data)
             node = node.right
         nodes.append("Null")
         return " -> ".join(nodes)
@@ -36,7 +36,7 @@ class Tree:
         list_of_items = []
         def walk(node):
             if node:
-                list_of_items.append(node.value)
+                list_of_items.append(node.data)
                 if node.left:
                     walk(node.left)
                 if node.right:
@@ -57,7 +57,7 @@ class Tree:
             if node:
                 if node.left:
                     walk(node.left)
-                list_of_items.append(node.value)
+                list_of_items.append(node.data)
                 if node.right:
                     walk(node.right)
         walk(self.root)
@@ -77,49 +77,34 @@ class Tree:
                     walk(node.left)
                 if node.right:
                     walk(node.right)
-                list_of_items.append(node.value)
+                list_of_items.append(node.data)
 
         walk(self.root)
         return list_of_items
 
 
-class BSTree(Tree):
+"""Each element in a binary tree can have only two children.
 
-    def add(self,value):
-        """
-        adds a new node of given value in the correct location
-        in the binary search tree.
+A node’s left child must have a value less than its parent’s value,
+A node’s right child must have a value greater than its parent value."""
+class BTree(Tree):
 
-        Args:
-            value ([any]): the value of the new node to add
+    def add(self,root,value):
 
-        """
-
-        node = Node(value)
-        if not self.root:
-            self.root = node
-            self.last = node
+        if not root:
+            root = Node(value)
             return
 
-        if not self.root.left:
-            self.root.left = node
-            self.last = node
-            return
-
-        if not self.root.right:
-            self.root.right = node
-            self.last = node
-            return
-
-        if not self.last.left:
-            self.last.left = node
-            return
-
-        if not self.last.right:
-            self.last.right = node
-
-        self.last = node
-
+        if root.data > value:
+            if not root.left:
+                root.left = Node(value)
+            else:
+                BTree.add(self,root.left, value)
+        else:
+            if root.right is None:
+                root.right = Node(value)
+            else:
+                BTree.add(self,root.right, value)
 
     def contains(self,value):
         """
@@ -138,8 +123,17 @@ class BSTree(Tree):
         return True if value in items else False
 
     def maximum(self):
+        """
+        method to returns the maximum value in a Binary search tree
 
-        if not self.root: exception('Its fall in here , no leafs in this tree')
+        """
+        items = self.in_order()
+
+        if len(items) == 0 :
+            exception('No items in the tree')
+
+        return max(items)
+
 
 
 
@@ -148,3 +142,17 @@ class BSTree(Tree):
 
 def exception(reason):
     raise Exception(reason)
+"""
+adds a new node of given value in the correct location
+in the binary search tree.
+
+
+Each element in a binary tree can have only two children.
+
+A node’s left child must have a value less than its parent’s value,
+A node’s right child must have a value greater than its parent value.
+
+Args:
+    value ([any]): the value of the new node to add
+
+"""
