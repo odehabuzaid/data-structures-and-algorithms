@@ -1,7 +1,7 @@
 import pytest
 from trees import __version__
 from trees.node import Node
-from trees.tree import BSTree, Tree
+from trees.tree import BTree, Tree
 
 tree = Tree()
 
@@ -11,7 +11,7 @@ def test_init_an_empty_tree():
     # Arrange
     t_test = Tree()
     # Actual
-    actual = t_test.__str__()
+    actual = t_test.__repr__()
     # Expected
     expected = 'Null'
     assert actual == expected
@@ -23,7 +23,7 @@ def test_successfully_init_with_single_root():
     a = Node(3)
     tree.root = a
     # Actual
-    actual = tree.root.value
+    actual = tree.root.data
     # Expected
     expected = 3
 
@@ -37,7 +37,7 @@ def test_successfully_add_left_right_childs_to_root():
     tree.root.left = Node('b')
     tree.root.right = Node('c')
     # Actual
-    actual = '{} {}'.format(tree.root.left.value,tree.root.right.value)
+    actual = '{} {}'.format(tree.root.left.data,tree.root.right.data)
     # Expected
     expected = 'b c'
 
@@ -77,7 +77,7 @@ def test_successfully_return_true_if_item_in_tree():
   # Expected
   # Pass
   # Actual
-  actual = BSTree.contains(tree,'4')
+  actual = BTree.contains(tree,'4')
   assert actual
 
 # Can successfully return False if item is not in tree
@@ -85,7 +85,7 @@ def test_successfully_return_true_if_item_in_tree():
   # Expected
   expected = False
   # Actual
-  actual = BSTree.contains(tree,'6')
+  actual = BTree.contains(tree,'6')
   assert actual == expected
 
 
@@ -93,26 +93,38 @@ def test_successfully_return_true_if_item_in_tree():
 def test_successfully_return_exception_while_empty():
     with pytest.raises(Exception):
         new_tree = Tree()
-        BSTree.contains(new_tree,'6')
+        BTree.contains(new_tree,'6')
 
 
 # Can successfully add nodes using BSTree Class add method
 def test_successfully_add_nodes_binary_search_tree_class():
     # Arrange
-
     b_tree = Tree()
+    b_tree.root = Node(3)
     for i in range(5):
-        BSTree.add(b_tree,i)
+        BTree.add(b_tree,b_tree.root,i)
 
     # Actual
     actual = b_tree.pre_order()
     # Expected
 
-    expected = [0,1,2,3,4]
+    expected = [3, 0, 1, 2, 3, 4]
     assert actual == expected
 
 
+# Can successfully find the maximum value
+def test_find_maximum_value_in_binary_search_tree_class():
+    # Arrange
+    b_tree = Tree()
+    b_tree.root = Node(3)
+    for i in range(5):
+        BTree.add(b_tree,b_tree.root,i)
+    # Actual
+    actual = BTree.maximum(b_tree)
+    # Expected
 
+    expected = 4
+    assert actual == expected
 
 @pytest.fixture(autouse=True)
 def arrange():

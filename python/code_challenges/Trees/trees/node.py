@@ -2,10 +2,10 @@ class Node:
     """
     Binary Tree Node
     """
-    def __init__(self,value=None):
+    def __init__(self, value=None):
         self.left = None
         self.right = None
-        self.value = value
+        self.data = value
 
     def __str__(self):
-        return '%s' % self.value
+        return '%s' % self.data
