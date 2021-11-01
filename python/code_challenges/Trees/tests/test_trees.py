@@ -106,7 +106,7 @@ def test_successfully_add_nodes_binary_search_tree_class():
 # Can successfully find the maximum value
 def test_find_maximum_value_in_binary_search_tree_class():
     # Actual
-    actual = BTree.maximum(tree)
+    actual = BTree.get_max(tree)
     # Expected
     expected = 4
     assert actual == expected

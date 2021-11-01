@@ -93,7 +93,7 @@ class Tree(Node):
         return list_of_items
 
 
-class BTree(Node):
+class BTree(Tree):
 
     def add(self,data):
         """
@@ -127,7 +127,7 @@ class BTree(Node):
 
         return True if value in items else False
 
-    def maximum(self):
+    def get_max(self):
         """
         method to returns the maximum value in a Binary search tree
 
