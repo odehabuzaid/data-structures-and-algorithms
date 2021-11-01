@@ -49,7 +49,7 @@ def test_successfully_return_preorder_traversal():
     # Actual
     actual = tree.pre_order()
     # Expected
-    expected = ['1', '2', '4', '3']
+    expected = [1, 2, 4, 3]
 
     assert actual == expected
 
@@ -57,7 +57,7 @@ def test_successfully_return_preorder_traversal():
 
 def test_successfully_return_in_order_traversal():
   # Expected
-  expected = ['4', '2', '1', '3']
+  expected = [4, 2, 1, 3]
   # Actual
   actual = tree.in_order()
 
@@ -66,7 +66,7 @@ def test_successfully_return_in_order_traversal():
 # Can successfully return a collection from a postorder traversal
 def test_successfully_return_postorder_traversal():
   # Expected
-  expected = ["4", "2", "3", "1"]
+  expected = [4, 2, 3, 1]
   # Actual
   actual = tree.post_order()
 
@@ -77,7 +77,7 @@ def test_successfully_return_true_if_item_in_tree():
   # Expected
   # Pass
   # Actual
-  actual = BTree.contains(tree,'4')
+  actual = BTree.contains(tree,4)
   assert actual
 
 # Can successfully return False if item is not in tree
@@ -99,39 +99,24 @@ def test_successfully_return_exception_while_empty():
 # Can successfully add nodes using BSTree Class add method
 def test_successfully_add_nodes_binary_search_tree_class():
     # Arrange
-    b_tree = Tree()
-    b_tree.root = Node(3)
-    for i in range(5):
-        BTree.add(b_tree,b_tree.root,i)
-
     # Actual
-    actual = b_tree.pre_order()
     # Expected
-
-    expected = [3, 0, 1, 2, 3, 4]
-    assert actual == expected
-
+    pass
 
 # Can successfully find the maximum value
 def test_find_maximum_value_in_binary_search_tree_class():
-    # Arrange
-    b_tree = Tree()
-    b_tree.root = Node(3)
-    for i in range(5):
-        BTree.add(b_tree,b_tree.root,i)
     # Actual
-    actual = BTree.maximum(b_tree)
+    actual = BTree.maximum(tree)
     # Expected
-
     expected = 4
     assert actual == expected
 
 @pytest.fixture(autouse=True)
 def arrange():
-    a_node = Node('1')
-    b_node = Node('2')
-    c_node = Node('3')
-    d_node = Node('4')
+    a_node = Node(1)
+    b_node = Node(2)
+    c_node = Node(3)
+    d_node = Node(4)
     a_node.left = b_node
     a_node.right = c_node
     b_node.left = d_node
