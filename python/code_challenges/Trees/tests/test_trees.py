@@ -11,10 +11,9 @@ def test_init_an_empty_tree():
     # Arrange
     t_test = Tree()
     # Actual
-    actual = t_test.__repr__()
+    actual = t_test.root
     # Expected
-    expected = 'Null'
-    assert actual == expected
+    assert not actual
 
 # Can successfully instantiate a tree with a single root node
 
@@ -99,9 +98,18 @@ def test_successfully_return_exception_while_empty():
 # Can successfully add nodes using BSTree Class add method
 def test_successfully_add_nodes_binary_search_tree_class():
     # Arrange
+    tree_ = Tree()
+    BTree.add(tree_,1)
+    BTree.add(tree_,2)
+    BTree.add(tree_,3)
+    BTree.add(tree_,4)
+    BTree.add(tree_,-1)
     # Actual
+    actual = tree_.in_order()
     # Expected
-    pass
+    excepted = [4, 3, 2, 1, -1]
+    # Assert
+    assert actual == excepted
 
 # Can successfully find the maximum value
 def test_find_maximum_value_in_binary_search_tree_class():

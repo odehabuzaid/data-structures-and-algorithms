@@ -18,20 +18,7 @@ class Tree(Node):
     """
     def __init__(self):
         self.root = None
-    def __repr__(self):
-        """
-        a string representing all the values in the Stack
 
-        Returns:
-            string: formated as  "{ a } -> { b } -> { c } -> NULL"
-        """
-        node = self.root
-        nodes = []
-        while node is not None:
-            nodes.append('{%s}' % node.data)
-            node = node.right
-        nodes.append("Null")
-        return " -> ".join(nodes)
 
     def pre_order(self):
         """
@@ -109,7 +96,25 @@ class BTree(Tree):
         value ([any]): the value of the new node to add
 
         """
-        pass
+
+        def btree(root):
+
+            if not root:
+                self.root = Node(data)
+                return
+            if root.data < data:
+                if not root.left:
+                    root.left = Node(data)
+                else:
+                    btree(root.left)
+            else:
+
+                if not root.right:
+                    root.right = Node(data)
+                else:
+                    btree(root.right)
+
+        btree(self.root)
 
     def contains(self,value):
         """
