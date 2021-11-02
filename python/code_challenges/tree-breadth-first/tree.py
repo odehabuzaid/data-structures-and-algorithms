@@ -96,7 +96,7 @@ class BTree(Tree):
         value ([any]): the value of the new node to add
 
         """
-
+        
         def btree(root):
 
             if not root:

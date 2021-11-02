@@ -12,4 +12,5 @@
 |     4    | [Linked Lists](python/code_challenges/linked_list/README.md)
 |     5    | [Stack and Queue](python/code_challenges/stack-and-queue/README.md)
 |     6    | [Stack Queue Pseudo](python/code_challenges/stack-queue-pseudo/README.md)
-
+|     7    | [Trees](python/code_challenges/Trees/README.md)
+|     8    | [Breadth-first Traversal.](python/code_challenges/tree-breadth-first/README.md)
