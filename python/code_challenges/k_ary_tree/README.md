@@ -1,6 +1,6 @@
 # Daily Code Challenge
 
-## Trees
+## k-ary-Trees
 Author: Odeh Abuzaid
 
 ---
@@ -14,7 +14,7 @@ Conduct “FizzBuzz” on a k-ary tree while traversing through it to create a n
 
 | Time | Space |
 | :----------- | :----------- |
-| O(1) | O(1) |
+| O(n) | O(n) |
 
 ---
 
