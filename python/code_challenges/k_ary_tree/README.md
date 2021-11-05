@@ -1,6 +1,6 @@
 # Daily Code Challenge
 
-## k-ary-Trees
+## k-ary-Trees  “FizzBuzz”
 Author: Odeh Abuzaid
 
 ---
@@ -14,12 +14,12 @@ Conduct “FizzBuzz” on a k-ary tree while traversing through it to create a n
 
 | Time | Space |
 | :----------- | :----------- |
-| O(n) | O(n) |
+| O(log n)  | O(1) |
 
 ---
 
 ## Whiteboard Process
-
+<img src="./Capture.JPG" alt="array-insert-shift">
 
 ## Approach & Efficiency
-Set the values of each of the new nodes depending on the corresponding node value in the source tree.
+recursivly walk through node childs if exist and check the values for each child , apply Fizz-Buzz on nodes data from the last node to the first node of root childs.
