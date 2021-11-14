@@ -15,3 +15,4 @@
 |     7    | [Trees](python/code_challenges/Trees/README.md)
 |     8    | [Breadth-first Traversal.](python/code_challenges/tree_breadth_first/README.md)
 |     9    | [k-ary Tree FizzBuzz](python/code_challenges/k_ary_tree/README.md)
+|     10    | [Insertion sort](python/code_challenges/Insertion-Sort/README.md)
