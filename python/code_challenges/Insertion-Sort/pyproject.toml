@@ -6,6 +6,8 @@ authors = ["Odeh <abuzaid163@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+black = "^21.10b0"
+flake8 = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 
