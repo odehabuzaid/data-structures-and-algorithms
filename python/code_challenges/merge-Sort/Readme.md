@@ -6,13 +6,13 @@
 
 
 ## Approach & Efficiency
- ## Merge sort
+ ## Divide and Conquer.
 
-Time --> O(n^2)
+Time --> O(n log(n))
 
-Space --> O(1)
+Space --> O(n)
 
 ## Solution
-loop the list values and compare the current value of current index and the previous
+Merge sort repeatedly by breaking down a list into several sublists until each sublist consists of a single element and merging those sublists in a manner that results into a sorted list.
 [BLOG.md](BLOG.md)
 

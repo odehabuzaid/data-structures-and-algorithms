@@ -11,9 +11,9 @@ def merge_sort(lst: list):
             k += 1
 
         if i == len(left):
-            lst[k:]=right[j:]
+            lst[k:] = right[j:]
         else:
-            lst[k:]=left[i:]
+            lst[k:] = left[i:]
 
     n = len(lst)
     if n > 1:
