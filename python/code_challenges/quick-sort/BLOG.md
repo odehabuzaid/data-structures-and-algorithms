@@ -41,7 +41,7 @@ ALGORITHM Swap(arr, i, low)
 
 ```
 ## visualized
-<img src='./visualized.jpg'>
+<img src='./visualized.JPG'>
 
 ## Efficency
 
