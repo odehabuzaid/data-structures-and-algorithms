@@ -3,7 +3,7 @@
 
 ## Whiteboard Process
 <img src='./Quick_sort.JPG'>
-<img src='./visualized.jpg'>
+<img src='./visualized.JPG'>
 
 ## Approach & Efficiency
  ## Divide and Conquer.
