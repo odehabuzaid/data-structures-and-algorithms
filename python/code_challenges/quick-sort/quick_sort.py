@@ -17,15 +17,11 @@ def quick_sort(lst: list, left: int = 0, right=None):
                 swap(i, low)
 
         swap(right, low + 1)
+
         return low + 1
 
     if left < right:
         position = partition(left, right)
         quick_sort(lst, left, position-1)
-
         quick_sort(lst, position + 1, right)
-    
     return lst
-
-
-print(quick_sort([8, 4, 23, 42, 16, 15]))

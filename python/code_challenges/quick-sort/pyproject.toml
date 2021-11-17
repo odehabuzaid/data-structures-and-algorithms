@@ -1,12 +1,13 @@
 [tool.poetry]
-name = "insertion_sort"
+name = "quick_sort"
 version = "0.1.0"
-description = "cc26"
+description = "cc28"
 authors = ["Odeh <abuzaid163@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^6.2.5"
+
 
 
 [tool.poetry.dev-dependencies]
