@@ -11,6 +11,9 @@ class Node:
         self.value = value
         self.next = next_
 
+    def __str__(self):
+        return str(self.value)
+
 
 class LinkedList:
     def __init__(self):
@@ -62,34 +65,29 @@ class HashTable:
         Retrieve the most recent value of in oour hasmap for the given key
 
         :param key str
-        :rvalue any
+        :yields any
         """
         # calculate index
         index = self.__hash(key)
         # check if there is a non empty bucket at the index
-        if self.__buckets[index]:
+        if self.contains(key):
             # iterate over linked list
             linked_list = self.__buckets[index]
             current = linked_list.head
             while current:
                 # check if the key in each node matches
                 if current.value[0] == key:
-                    # return the value of the node with the mathcing key
-                    return current.value[1]
+                    # yield each value of the nodes with the mathcing key
+                    yield current.value[1]
                 current = current.next
-
-        # return None
-        return None
 
     def contains(self, key):
         """
-        Retrieve the most recent value of in oour hasmap for the given key
-
+        check if the key exists in the table already
         :param key str
-        :rvalue any
+        :rvalue boolean
         """
         # calculate index
         index = self.__hash(key)
         # check if there is a non empty bucket at the index
-
         return True if self.__buckets[index] else None
