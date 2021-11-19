@@ -3,7 +3,7 @@ from hash_map import HashTable
 
 hash_table = HashTable()
 
-
+# no need ,
 @pytest.fixture
 def tester():
     return assert_generator_values
@@ -20,14 +20,14 @@ def test_add_key_value_to_hashtable():
     assert actual == expected
 
 
-def test_retrieving_based_on_existing_key(tester):
+def test_retrieving_based_on_existing_key():
     # arranged -> add("key", "value")
     # actual
-    actual = hash_table.get("key")
+    actual = list(hash_table.get("key"))
     # expected
-    expected = "value"
+    expected = ["value"]
     # assert
-    tester(actual, expected)
+    assert actual == expected
 
 
 def test_retrieving_based_on_not_existing_key():
@@ -48,20 +48,20 @@ def test_successfully_handle_collision_within_hashtable():
 
     hash_table.add("yek", "another_Value")
     # actual
-    actual = hash_table.contains("key")
+    actual = hash_table.contains("yek")
     # expected
     expected = True
     # assert
     assert actual == expected
 
 
-def test_retrieve_value_within_hashtable_has_collision(tester):
+def test_retrieve_value_within_hashtable_has_collision():
     # arranged -> add("yek", "another_Value")
-    actual = hash_table.get("yek")
+    actual = list(hash_table.get("yek"))
     # expected -> list of values extracted from the nodes.
-    expected = "another_Value"
+    expected = ["another_Value"]
     # Assert
-    tester(actual, expected)
+    assert actual == expected
 
 
 def test_hash_to_in_range_value():
@@ -77,6 +77,33 @@ def test_hash_to_in_range_value():
     assert actual == expected
 
 
+"""
+HashMap can be used to store key-value pairs.
+But sometimes you may want to store multiple values for the same key.
+
+For example:
+
+For Key A, you want to store - Apple, Aeroplane
+
+For Key B, you want to store - Bat, Banana
+
+For Key C, you want to store – Cat, Car
+"""
+
+
+def test_retrieving_based_on_existing_key_added_multible_times():
+    # arranged
+    hash_table.add("C", "Car")
+    hash_table.add("C", "Cat")
+    # actual
+    actual = list(hash_table.get("C"))
+    # expected
+    expected = ["Cat", "Car"]
+    # assert
+    assert actual == expected
+
+
+# no need ,
 def assert_generator_values(actual, expected):
     """
     function to assert values from HashTable generator (get) method
@@ -98,5 +125,3 @@ def assert_generator_values(actual, expected):
         assert value == expected[idx]
 
     # case None will pass since no assert statement applied to expect it.
-
-
