@@ -18,3 +18,4 @@
 |     10    | [Insertion sort](python/code_challenges/Insertion-Sort/README.md)
 |     11    | [Merge sort](python/code_challenges/merge-Sort/README.md)
 |     12    | [Quick sort](python/code_challenges/quick-Sort/README.md)
+|     13    | [hashmap](python/code_challenges/hashmap/README.md)
