@@ -1,3 +1,4 @@
+import pytest
 from hash_map import HashTable
 
 hash_table = HashTable()
@@ -17,7 +18,7 @@ def test_add_key_value_to_hashtable():
 def test_retrieving_based_on_existing_key():
     # arranged -> add("key", "value")
     # actual
-    actual = list(hash_table.get("key"))
+    actual = hash_table.get("key")
     # expected
     expected = ["value"]
     # assert
@@ -25,18 +26,14 @@ def test_retrieving_based_on_existing_key():
 
 
 def test_retrieving_based_on_not_existing_key():
-    # actual
-    actual = hash_table.contains("key_not_there")
-    # expected
-    expected = None
-    # assert
-    assert actual == expected
+    with pytest.raises(Exception):
+        hash_table.get("key_not_there")
 
 
 def test_successfully_handle_collision_within_hashtable():
-    hash_table.add("key_", "another_Value")
+    hash_table.add("key", "another_Value")
     # actual
-    actual = hash_table.contains("key_")
+    actual = hash_table.contains("key")
     # expected
     expected = True
     # assert
@@ -44,10 +41,9 @@ def test_successfully_handle_collision_within_hashtable():
 
 
 def test_retrieve_value_within_hashtable_has_collision():
-
-    actual = hash_table.get("key_")
+    actual = hash_table.get("key")
     # expected -> list of values extracted from the nodes.
-    expected = ["another_Value"]
+    expected = ["value", "another_Value"]
     # Assert
     assert actual == expected
 
@@ -84,7 +80,7 @@ def test_retrieving_based_on_existing_key_added_multible_times():
     hash_table.add("C", "Car")
     hash_table.add("C", "Cat")
     # actual
-    actual = list(hash_table.get("C"))
+    actual = hash_table.get("C")
     # expected
     expected = ["Car", "Cat"]
     # assert
