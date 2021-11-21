@@ -57,8 +57,12 @@ class HashTable:
 
         if not self.__buckets[index]:
             self.__buckets[index] = LinkedList()
-        my_value = [key, value]
-        self.__buckets[index].insert(my_value)
+            self.__buckets[index].insert([key, [value]])
+            return
+
+        values = self.get(key)
+        values = values + [value]
+        self.__buckets[index].insert([key, values])
 
     def get(self, key):
         """
@@ -77,8 +81,8 @@ class HashTable:
             while current:
                 # check if the key in each node matches
                 if current.value[0] == key:
-                    # yield each value of the nodes with the mathcing key
-                    yield current.value[1]
+                    # return each value of the nodes with the mathcing key
+                    return current.value[1]
                 current = current.next
 
     def contains(self, key):
