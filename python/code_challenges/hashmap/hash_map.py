@@ -74,7 +74,7 @@ class HashTable:
         # calculate index
         index = self.__hash(key)
         # check if there is a non empty bucket at the index
-        if self.contains(key):
+        if self.__buckets[index]:
             # iterate over linked list
             linked_list = self.__buckets[index]
             current = linked_list.head
@@ -84,6 +84,7 @@ class HashTable:
                     # return each value of the nodes with the mathcing key
                     return current.value[1]
                 current = current.next
+        raise Exception(KeyError)
 
     def contains(self, key):
         """
