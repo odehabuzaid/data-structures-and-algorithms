@@ -1,5 +1,5 @@
 import pytest
-from hash_map import HashTable
+from .hash_map import HashTable
 
 hash_table = HashTable()
 
