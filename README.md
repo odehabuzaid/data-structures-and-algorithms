@@ -19,3 +19,5 @@
 |     11    | [Merge sort](python/code_challenges/merge-Sort/README.md)
 |     12    | [Quick sort](python/code_challenges/quick-Sort/README.md)
 |     13    | [hashmap](python/code_challenges/hashmap/README.md)
+|     14    | [repeted words](python/code_challenges/hashmap/repeted_words/README.md)
+|     15    | [tree intersection](python/code_challenges/tree_intersection/README.md)

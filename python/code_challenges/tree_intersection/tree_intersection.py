@@ -1,24 +1,48 @@
+import inspect
+import os
+import sys
 
+# region import requirements
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir)
 
-from ..hashmap.hash_map import HashTable
-from .tree import to_binary_tree
+from hashmap.hash_map import HashTable
 
-hash_table = HashTable()
+# endregion
 
-hash_table.add('ket','value')
-
-val = hash_table.get('ket')
 
 def tree_intersection(a_tree, b_tree) -> list:
+    # region docs
     """
-    returns a set of values found in both trees.
+    Find common values in 2 binary trees.
 
     Args:
-        a_tree ([type]): [description]
-        b_tree ([type]): [description]
+        a_tree (Tree): Binary Tree
+        b_tree (Tree): Binary Tree
 
     Returns:
-        list: [description]
+        list: similiar values found in both trees.
     """
-    
-    pass
+    # endregion
+
+    intersections = list()
+    hash_table = HashTable()
+
+    def walk(node):
+        if node:
+            if node.left:
+                walk(node.left)
+
+            if hash_table.contains(str(node.data)):
+                intersections.append(node.data)
+
+            hash_table.add(str(node.data), node.data)
+
+            if node.right:
+                walk(node.right)
+
+    walk(a_tree.root)
+    walk(b_tree.root)
+
+    return intersections

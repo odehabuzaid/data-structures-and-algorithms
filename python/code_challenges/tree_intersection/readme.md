@@ -1,15 +1,22 @@
 # Challenge Summary
-Find common values in 2 binary trees.
+Find common values in two binary trees.
 
 ## Whiteboard Process
-<!-- Embedded whiteboard image -->
+![InterSections](./tree_intersection.jpg)
 
 ## Approach & Efficiency
-coparsion
+Recursion
 
-Time -> O(2log n)
-Space -> O(log n)
+walk first tree and insert nodes values to hash table then walk the second tree
+and check if the value at current position is in the hash table based on its hashed value as index
+append it to list of intersections.
+
+Time -> O(log n)
+
+Space -> O(1)
+
 ## Solution
-iterate over both lists and compair each values , if they match append that value to list , afte finish all of them
-return the list of matching items
+
+[Code](.\tree_intersection.py)
+
 
