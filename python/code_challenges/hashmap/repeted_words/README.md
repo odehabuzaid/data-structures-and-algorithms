@@ -2,7 +2,7 @@
 Find the first repeated word in a book.
 
 ## Whiteboard Process
-![Repeated_word](.\repeated_word.png)
+![Repeated_word](repeated_word.png)
 
 ## Approach & Efficiency
 used a hashmap
