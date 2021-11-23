@@ -17,6 +17,6 @@ Space -> O(1)
 
 ## Solution
 
-[Code](.\tree_intersection.py)
+[Code](tree_intersection.py)
 
 
