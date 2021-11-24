@@ -20,9 +20,6 @@ def setup(map1: list, map2: list):
     map_1 = HashTable()
     map_2 = HashTable()
 
-    lst_tree_a = map1
-    lst_tree_b = map2
-
     for val in map1:
         if val:
             map_1.add(val[0], val[1])
