@@ -2,15 +2,17 @@
 Implement a simplified LEFT JOIN for 2 Hashmaps.
 
 ## Whiteboard Process
-![left join](./left_join.jpg)
+![left join](./hashmap_lj.jpg)
 
 ## Approach & Efficiency
-Search and compair keys
+iterate the bucket of the left map and check if the key exists in the right map , then get its value
+    and append it to the same key values .
 
-Time -> O(n)
+    - Time -> O(n)
+    - Space -> O(log n)
 
-Space -> O(n)
+## solution
 
-## Solution
+[Code](hashmap_lj.py)
 
-[Code](left_join.py)
+[Test](test_hashmap.py)

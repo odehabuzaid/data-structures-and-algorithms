@@ -19,27 +19,93 @@ from hashmap.hash_map import HashTable
 def setup(map1: list, map2: list):
     map_1 = HashTable()
     map_2 = HashTable()
+
     lst_tree_a = map1
     lst_tree_b = map2
 
     for val in lst_tree_a:
-        map_1.add(val[0], val[1])
+        if val:
+            map_1.add(val[0], val[1])
 
     for val in lst_tree_b:
-        map_2.add(val[0], val[1])
+        if val:
+            map_2.add(val[0], val[1])
 
     return map_1, map_2
 
 
-@pytest.mark("Pending")
-@pytest.mark.parametrize("map1", [[["key", "value"], ["key_a", "value"]]])
-@pytest.mark.parametrize("map2", [[["key", "values"], ["key_a", "value"]]])
-def test_tree_intersections(setup):
+@pytest.mark.parametrize("map1", [[["Car", "Tesla"], ["Race", "WRC"]]])
+@pytest.mark.parametrize("map2", [[["Car", "BMW"], ["Type", "Monster"]]])
+def test_hash_left_join(setup):
     # arrange
     map1, map2 = setup
     # actual
     actual = left_join(map1, map2)
     # expected
-    expected = None
+    expected = [["Race", ["WRC"]], ["Car", ["Tesla", "BMW"]]]
+    # assert
+    assert actual == expected
+
+
+@pytest.mark.parametrize("map1", [[["Car", "Tesla"]]])
+@pytest.mark.parametrize("map2", [[["Car", "BMW"]]])
+def test_hash_left_join_one_key(setup):
+    # arrange
+    map1, map2 = setup
+    # actual
+    actual = left_join(map1, map2)
+    # expected
+    expected = [["Car", ["Tesla", "BMW"]]]
+    # assert
+    assert actual == expected
+
+
+@pytest.mark.parametrize("map1", [[[]]])
+@pytest.mark.parametrize("map2", [[[]]])
+def test_hash_left_join_on_empty(setup):
+    # arrange
+    map1, map2 = setup
+    # actual
+    actual = left_join(map1, map2)
+    # expected
+    expected = []
+    # assert
+    assert actual == expected
+
+
+lst_map_1 = [
+    ["fond", "enamored"],
+    ["wrath", "anger"],
+    ["diligent", "employed"],
+    ["outfil", "garb"],
+    ["guide", "usher"],
+]
+
+lst_map_2 = [
+    ["fond", "averse"],
+    ["wrath", "delight"],
+    ["diligent", "idle"],
+    ["guide", "follow"],
+    ["flow", "jam"],
+]
+
+
+@pytest.mark.parametrize("map1", [lst_map_1])
+@pytest.mark.parametrize("map2", [lst_map_2])
+def test_hash_left_join_req_example(setup):
+    # arrange
+    map1, map2 = setup
+    # actual
+    actual = left_join(map1, map2)
+    # expected
+    expected_list = [
+        ["outfil", ["garb"]],
+        ["guide", ["usher", "follow"]],
+        ["wrath", ["anger", "delight"]],
+        ["diligent", ["employed", "idle"]],
+        ["fond", ["enamored", "averse"]],
+    ]
+
+    expected = expected_list
     # assert
     assert actual == expected
