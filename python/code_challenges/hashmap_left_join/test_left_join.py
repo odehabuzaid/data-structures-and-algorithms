@@ -23,11 +23,11 @@ def setup(map1: list, map2: list):
     lst_tree_a = map1
     lst_tree_b = map2
 
-    for val in lst_tree_a:
+    for val in map1:
         if val:
             map_1.add(val[0], val[1])
 
-    for val in lst_tree_b:
+    for val in map2:
         if val:
             map_2.add(val[0], val[1])
 
