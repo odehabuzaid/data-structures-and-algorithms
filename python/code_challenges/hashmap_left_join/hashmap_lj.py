@@ -26,19 +26,15 @@ def left_join(left_map: HashTable, right_map: HashTable) -> list:
     # endregion
 
     left_joind_right_values = []
-    for linked_list in left_map._HashTable__buckets:
-        if linked_list is not None:
+    for index in left_map:
+        key = index[0]
+        values = index[1]
 
-            current = linked_list.head
+        if right_map.contains(key):
 
-            key = current.value[0]
-            values = current.value[1]
+            right_value = right_map.get(key)
+            values.append(right_value[0])
 
-            if right_map.contains(key):
-
-                right_value = right_map.get(key)
-                values.append(right_value[0])
-
-            left_joind_right_values.append([key, values])
+        left_joind_right_values.append([key, values])
 
     return left_joind_right_values
