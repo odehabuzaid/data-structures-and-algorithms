@@ -38,6 +38,17 @@ class HashTable:
         self.__size = size
         self.__buckets = [None] * size
 
+    def __iter__(self):
+        """
+        yields every single indexed key,value.
+        """
+        for linked_list in self.__buckets:
+            if linked_list is not None:
+                current = linked_list.head
+                key = current.value[0]
+                values = current.value[1]
+                yield [key, values]
+
     def __hash(self, key):
         """
         Takes a key which is a string and returns an integer which is the index that will be used to store the key/value pari in a Node at that index.
