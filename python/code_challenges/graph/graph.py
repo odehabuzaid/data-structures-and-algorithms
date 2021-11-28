@@ -115,27 +115,28 @@ class Graph:
         """ """
         return self.__adjacency_list.get(vertex, [])
 
-    def breadth_first_search(self, start_vertex, action=(lambda vertex: None)):
+    def return_nodes(self, data):
+        return data
+
+    def breadth_first_search(self, start_vertex, action=(lambda _: None)):
         queue = Queue()
         visited = set()
+        nodes = list()
 
         queue.enqueue(start_vertex)
-        visited.add(start_vertex)
 
         while len(queue):
             current_vertex = queue.dequeue()
+            visited.add(current_vertex)
+            nodes.append(current_vertex)
 
-            neighbors = action(current_vertex)
+            neighbors = self.get_neigbors(current_vertex)
+
             for edge in neighbors:
 
                 neighbor = edge.vertex
-
-                # for test
-                yield edge
-
                 if neighbor not in visited:
                     visited.add(neighbor)
                     queue.enqueue(neighbor)
 
-
-
+        return action(nodes)
