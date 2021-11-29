@@ -98,20 +98,30 @@ def test_get_neighbors():
 def test_bfs():
 
     graph = Graph()
+    pandora = graph.add_node("Pandora")
+    arendelle = graph.add_node("Arendelle")
+    monstropolis = graph.add_node("Monstropolis")
+    metroville = graph.add_node("Metroville")
+    naboo = graph.add_node("Naboo")
+    narnia = graph.add_node("Narnia")
 
-    banana = graph.add_node("banana")
+    graph.add_edge(pandora, arendelle, 1)
 
-    apple = graph.add_node("apple")
+    graph.add_edge(arendelle, metroville, 2)
+    graph.add_edge(arendelle, monstropolis, 2)
 
-    tst = graph.add_node("test")
-    graph.add_edge(apple, banana, 44)
-    graph.add_edge(apple, tst, 45)
+    graph.add_edge(monstropolis, metroville, 2)
+    graph.add_edge(monstropolis, naboo, 2)
 
-    graph.add_edge(tst, banana, 45)
+    graph.add_edge(metroville, naboo, 2)
+    graph.add_edge(metroville, narnia, 2)
 
-    neighbors = list(graph.breadth_first_search(apple, graph.get_neigbors))
+    graph.add_edge(naboo, narnia, 2)
 
-    expected = ["banana", "test", "banana"]
+    actual = graph.breadth_first_search(pandora, graph.return_nodes)
 
-    for indx, v in enumerate(neighbors):
+    expected = ["Pandora", "Arendelle", "Metroville", "Monstropolis", "Naboo", "Narnia"]
+
+    for indx, v in enumerate(actual):
+        print(expected[indx])
         assert v.__str__() == expected[indx]
