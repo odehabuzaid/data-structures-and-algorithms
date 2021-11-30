@@ -11,18 +11,14 @@ def business_trip(graph, cities: list) -> int or None:
         if location.value == position:
             neighbors = graph.get_neigbors(location)
 
-            print(destinations)
             for dest in destinations:
-                if dest in neighbors.__repr__():
-                    print(dest)
+                if dest in neighbors:
                     cost += neighbors[dest].weight
-
-                else:
                     neighbors_of = graph.get_neigbors(neighbors[dest].vertex)
-                    if dest in neighbors_of.__repr__():
-                        print(dest)
-                        cost += neighbors[dest].weight
 
+                    for nei_of in neighbors_of:
+                        if nei_of in destinations:
+                            cost += neighbors_of[nei_of].weight
 
             if cost:
                 return "True, ${}".format(cost)
@@ -62,14 +58,6 @@ def create_graph():
     graph.add_edge(narnia, metroville, 37)
     graph.add_edge(naboo, naboo, 250)
 
-    nodes = graph.get_nodes()
-    print(type(nodes))
-
-    # for i in nodes:
-    #     if i.value == "Metroville":
-    #         print(i.value)
-
-    print("=" * 30)
     return graph
 
 
