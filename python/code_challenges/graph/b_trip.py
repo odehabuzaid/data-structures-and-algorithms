@@ -1,16 +1,22 @@
 from graph import Graph
 
 
-def business_trip(graph, cities: list) -> int or None:
-    destinations = cities[1:]  #
+def business_trip(graph, cities: list) -> str:
+    destinations = cities[1:]
     position = cities[0]
     locations = graph.get_nodes()
     cost = 0
 
+    # loop the nodes of the graph
     for location in locations:
+        # check if  location equals the from position
         if location.value == position:
+            # get neighbors of the starting position
             neighbors = graph.get_neigbors(location)
 
+            # loop neighbors citires of starting position
+            # check if any neighbor city is in destination
+            # calculate the weight
             for dest in destinations:
                 if dest in neighbors:
                     cost += neighbors[dest].weight
@@ -19,7 +25,7 @@ def business_trip(graph, cities: list) -> int or None:
                     for nei_of in neighbors_of:
                         if nei_of in destinations:
                             cost += neighbors_of[nei_of].weight
-
+            
             if cost:
                 return "True, ${}".format(cost)
 
@@ -62,5 +68,7 @@ def create_graph():
 
 
 graph = create_graph()
-
+print(business_trip(graph, ["Metroville", "Pandora"]))
 print(business_trip(graph, ["Arendelle", "Monstropolis", "Naboo"]))
+print(business_trip(graph, ["Narnia", "Arendelle", "Naboo"]))
+print(business_trip(graph, ["Naboo", "Pandora"]))
