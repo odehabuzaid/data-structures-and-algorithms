@@ -96,7 +96,38 @@ def test_get_neighbors():
 
 
 def test_bfs():
+    graph = Graph()
+    pandora = graph.add_node("Pandora")
+    arendelle = graph.add_node("Arendelle")
+    monstropolis = graph.add_node("Monstropolis")
+    metroville = graph.add_node("Metroville")
+    naboo = graph.add_node("Naboo")
+    narnia = graph.add_node("Narnia")
 
+    graph.add_edge(pandora, arendelle, 1)
+
+    graph.add_edge(arendelle, metroville, 2)
+    graph.add_edge(arendelle, monstropolis, 2)
+
+    graph.add_edge(monstropolis, metroville, 2)
+    graph.add_edge(monstropolis, naboo, 2)
+
+    graph.add_edge(metroville, naboo, 2)
+    graph.add_edge(metroville, narnia, 2)
+
+    graph.add_edge(naboo, narnia, 2)
+
+    actual = graph.breadth_first_search(pandora, graph.return_nodes)
+
+    expected = ["Pandora", "Arendelle", "Metroville", "Monstropolis", "Naboo", "Narnia"]
+
+    for indx, v in enumerate(actual):
+        print(expected[indx])
+        assert v.__str__() == expected[indx]
+
+
+
+def test_bfs():
     graph = Graph()
     pandora = graph.add_node("Pandora")
     arendelle = graph.add_node("Arendelle")
