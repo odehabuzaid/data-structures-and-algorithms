@@ -1,21 +1,3 @@
-class Vertex:
-    """
-    Class for Adding a node to the graph
-    Arguments: value
-    Returns: The added node
-    """
-
-    def __init__(self, value):
-        """
-        Initalization for a Vertex to hold a value.
-
-        """
-        self.value = value
-
-    def __str__(self):
-        return str(self.value)
-
-
 class Queue:
     def __init__(self):
         self.dq = []
@@ -55,6 +37,27 @@ class Stack:
         self.dq.pop()
 
 
+class Vertex:
+    """
+    Class for Adding a node to the graph
+    Arguments: value
+    Returns: The added node
+    """
+
+    def __init__(self, value):
+        """
+        Initalization for a Vertex to hold a value.
+
+        """
+        self.value = value
+
+    def __str__(self):
+        return str(self.value)
+
+    def __repr__(self):
+        return str(self.value)
+
+
 class Edge:
     """
     a class for Adding a new edge between two nodes in the graph
@@ -69,6 +72,9 @@ class Edge:
         self.weight = weight
 
     def __str__(self):
+        return str(self.vertex)
+
+    def __repr__(self):
         return str(self.vertex)
 
 
@@ -109,11 +115,23 @@ class Graph:
         Arguments: None
         return: All nodes
         """
-        return self.__adjacency_list.keys()
+        return self.__adjacency_list
 
     def get_neigbors(self, vertex):
         """ """
-        return self.__adjacency_list.get(vertex, [])
+        neigbors = None
+
+        for node in self.get_nodes():
+
+            if node.value == vertex:
+                neigbors = self.__adjacency_list.get(node, [])
+
+        neigbors_dict = {}
+        if neigbors:
+            for neigbor in neigbors:
+                neigbors_dict[neigbor.__str__()] = neigbor
+
+        return neigbors_dict
 
     def return_nodes(self, data):
         return data
@@ -134,7 +152,7 @@ class Graph:
 
             for edge in neighbors:
 
-                neighbor = edge.vertex
+                neighbor = neighbors[edge].vertex
                 if neighbor not in visited:
                     visited.add(neighbor)
                     queue.enqueue(neighbor)
