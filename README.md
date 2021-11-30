@@ -24,4 +24,6 @@
 |     16    | [Hashmap left join](python/code_challenges/hashmap_left_join/README.md)
 |     17    | [Graph](python/code_challenges/graph/README.md)
 |     18    | [Graph-BFS](python/code_challenges/graph/breadth_first_search/README.md)
+|     19    | [Graph-BFS](python/code_challenges/graph/graph_business_trip/README.md)
+
 

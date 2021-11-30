@@ -14,9 +14,9 @@ business_trip
 
 
 ## Approach & Efficiency
-Time --> O(n)
+Time --> O(n^2)
 Space --> O(n)
 
 ## Solution
-[Code](../graph.py)
+[Code](../b_trip.py)
 
