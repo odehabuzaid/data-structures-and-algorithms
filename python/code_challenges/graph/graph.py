@@ -119,7 +119,13 @@ class Graph:
 
     def get_neigbors(self, vertex):
         """ """
-        neigbors = self.__adjacency_list.get(vertex, [])
+        neigbors = None
+
+        for node in self.get_nodes():
+
+            if node.value == vertex:
+                neigbors = self.__adjacency_list.get(node, [])
+
         neigbors_dict = {}
         if neigbors:
             for neigbor in neigbors:

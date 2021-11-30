@@ -1,34 +1,30 @@
 def business_trip(graph, cities: list) -> str:
     destinations = cities[1:]
     position = cities[0]
-    locations = graph.get_nodes()
     cost = 0
 
-    # loop the nodes of the graph
-    for location in locations:
-        # check if  location equals the from position
-        if location.value == position:
-            # get neighbors of the starting position
-            neighbors = graph.get_neigbors(location)
+    # get neighbors of the starting position
+    neighbors = graph.get_neigbors(position)
 
-            # loop neighbors citires of starting position
-            # check if any neighbor city is in destination
-            # calculate the weight of each edge as cost
-            for dest in destinations:
-                if dest in neighbors:
-                    cost += neighbors[dest].weight
+    # loop neighbors cities of starting position
+    # check if any neighbor city is in destination
+    # calculate the weight of each edge as cost
+    for dest in destinations:
+        if dest in neighbors:
+            cost += neighbors[dest].weight
 
-                    # get the destination neighbor
-                    neighbors_of = graph.get_neigbors(neighbors[dest].vertex)
+            # get the destination neighbor
+            next_destination = neighbors[dest].vertex.value
+            neighbors_of = graph.get_neigbors(next_destination)
 
-                    # loop the  dest neighbor & check if any of destinations
-                    # exists in the closet neighbor
-                    # if exists
-                    # add the weight of each edge to the cost
-                    for next_neighborr in neighbors_of:
-                        if next_neighborr in destinations:
-                            cost += neighbors_of[next_neighborr].weight
-            if cost:
-                return "True, ${}".format(cost)
+            # loop the  dest neighbors & check if any of destinations
+            # exists in the closet neighbor
+            # if exists
+            # add the weight of each edge to the cost
+            for next_neighborr in neighbors_of:
+                if next_neighborr in destinations:
+                    cost += neighbors_of[next_neighborr].weight
+    if cost:
+        return "True, ${}".format(cost)
 
-            return "False, $0"
+    return "False, $0"
