@@ -31,9 +31,11 @@ def create_graph():
 
     graph.add_edge(naboo, metroville, 26)
     graph.add_edge(naboo, narnia, 250)
+    graph.add_edge(naboo, monstropolis, 73)
+
 
     graph.add_edge(narnia, metroville, 37)
-    graph.add_edge(naboo, naboo, 250)
+    graph.add_edge(narnia, naboo, 250)
     return graph
 
 
@@ -96,11 +98,9 @@ def test_get_nodes():
 
     graph = Graph()
 
-    banana = graph.add_node("banana")
+    graph.add_node("banana")
 
-    apple = graph.add_node("apple")
-
-    loner = Vertex("loner")
+    graph.add_node("apple")
 
     expected = 2
 

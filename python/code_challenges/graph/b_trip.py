@@ -1,8 +1,12 @@
 def business_trip(graph, cities: list) -> str:
+    def check_out(cost):
+        if cost:
+            return "True, ${}".format(cost)
+        return "False, $0"
+
     destinations = cities[1:]
     position = cities[0]
     cost = 0
-
     # get neighbors of the starting position
     neighbors = graph.get_neigbors(position)
 
@@ -24,7 +28,6 @@ def business_trip(graph, cities: list) -> str:
             for next_neighborr in neighbors_of:
                 if next_neighborr in destinations:
                     cost += neighbors_of[next_neighborr].weight
-    if cost:
-        return "True, ${}".format(cost)
-
-    return "False, $0"
+        else:
+            return check_out(cost)
+    return check_out(cost)
