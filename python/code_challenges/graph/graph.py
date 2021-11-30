@@ -158,3 +158,6 @@ class Graph:
                     queue.enqueue(neighbor)
 
         return action(nodes)
+
+    def depth_first_search(self, start_vertex):
+        pass
