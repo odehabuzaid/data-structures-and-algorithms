@@ -1,6 +1,3 @@
-from graph import Graph
-
-
 def business_trip(graph, cities: list) -> str:
     destinations = cities[1:]
     position = cities[0]
@@ -35,45 +32,3 @@ def business_trip(graph, cities: list) -> str:
                 return "True, ${}".format(cost)
 
             return "False, $0"
-
-
-def create_graph():
-    graph = Graph()
-    pandora = graph.add_node("Pandora")
-    arendelle = graph.add_node("Arendelle")
-    monstropolis = graph.add_node("Monstropolis")
-    metroville = graph.add_node("Metroville")
-    naboo = graph.add_node("Naboo")
-    narnia = graph.add_node("Narnia")
-
-    graph.add_edge(pandora, arendelle, 150)
-    graph.add_edge(pandora, metroville, 82)
-
-    graph.add_edge(arendelle, pandora, 150)
-    graph.add_edge(arendelle, monstropolis, 42)
-    graph.add_edge(arendelle, metroville, 99)
-
-    graph.add_edge(metroville, pandora, 82)
-    graph.add_edge(metroville, arendelle, 99)
-    graph.add_edge(metroville, naboo, 26)
-    graph.add_edge(metroville, monstropolis, 105)
-    graph.add_edge(metroville, narnia, 37)
-
-    graph.add_edge(monstropolis, arendelle, 42)
-    graph.add_edge(monstropolis, metroville, 105)
-    graph.add_edge(monstropolis, naboo, 73)
-
-    graph.add_edge(naboo, metroville, 26)
-    graph.add_edge(naboo, narnia, 250)
-
-    graph.add_edge(narnia, metroville, 37)
-    graph.add_edge(naboo, naboo, 250)
-
-    return graph
-
-
-graph = create_graph()
-print(business_trip(graph, ["Metroville", "Pandora"]))
-print(business_trip(graph, ["Arendelle", "Monstropolis", "Naboo"]))
-print(business_trip(graph, ["Narnia", "Arendelle", "Naboo"]))
-print(business_trip(graph, ["Naboo", "Pandora"]))

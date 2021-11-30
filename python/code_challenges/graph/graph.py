@@ -146,7 +146,7 @@ class Graph:
 
             for edge in neighbors:
 
-                neighbor = edge.vertex
+                neighbor = neighbors[edge].vertex
                 if neighbor not in visited:
                     visited.add(neighbor)
                     queue.enqueue(neighbor)
