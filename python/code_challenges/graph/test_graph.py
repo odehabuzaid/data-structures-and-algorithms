@@ -33,7 +33,6 @@ def create_graph():
     graph.add_edge(naboo, narnia, 250)
     graph.add_edge(naboo, monstropolis, 73)
 
-
     graph.add_edge(narnia, metroville, 37)
     graph.add_edge(narnia, naboo, 250)
     return graph
@@ -173,5 +172,115 @@ def test_graph_business_trip_three_cities(create_graph):
     expected = "True, $115"
 
     actual = business_trip(graph, ["Arendelle", "Monstropolis", "Naboo"])
+
+    assert actual == expected
+
+
+# ============================================ DFS
+
+
+@pytest.fixture()
+def create_graph_dfs():
+    graph = Graph()
+    a = graph.add_node("A")
+    b = graph.add_node("B")
+    c = graph.add_node("C")
+    d = graph.add_node("D")
+    e = graph.add_node("E")
+    f = graph.add_node("F")
+    g = graph.add_node("G")
+    h = graph.add_node("H")
+
+    graph.add_edge(a, d, 0)
+    graph.add_edge(a, b, 0)
+
+    graph.add_edge(b, d, 0)
+    graph.add_edge(b, a, 0)
+    graph.add_edge(b, c, 0)
+
+    graph.add_edge(c, g, 0)
+    graph.add_edge(c, b, 0)
+    graph.add_edge(g, c, 0)
+
+    graph.add_edge(d, a, 0)
+    graph.add_edge(d, b, 0)
+    graph.add_edge(d, e, 0)
+    graph.add_edge(d, h, 105)
+    graph.add_edge(d, f, 37)
+
+    graph.add_edge(e, d, 42)
+
+    graph.add_edge(f, d, 26)
+    graph.add_edge(f, h, 250)
+
+    graph.add_edge(h, f, 73)
+    graph.add_edge(h, d, 73)
+    return graph
+
+
+def test_graph_depth_first_search_connected_nodes(create_graph_dfs):
+    graph = create_graph_dfs
+
+    expected = {"A", "B", "C", "G", "D", "E", "H", "F"}
+
+    actual = graph.depth_first_search("A")
+
+    assert actual == expected
+
+
+@pytest.fixture()
+def create_graph_dfs_test():
+    graph = Graph()
+    a = graph.add_node("A")
+    b = graph.add_node("B")
+    c = graph.add_node("C")
+    d = graph.add_node("D")
+    e = graph.add_node("E")
+    f = graph.add_node("F")
+    g = graph.add_node("G")
+    h = graph.add_node("H")
+
+    graph.add_edge(a, d, 0)
+    graph.add_edge(a, b, 0)
+
+    graph.add_edge(b, d, 0)
+    graph.add_edge(b, a, 0)
+    graph.add_edge(b, c, 0)
+
+    graph.add_edge(c, g, 0)
+    graph.add_edge(c, b, 0)
+    graph.add_edge(g, c, 0)
+
+
+    graph.add_edge(d, h, 105)
+    graph.add_edge(d, f, 37)
+
+    graph.add_edge(e, d, 42)
+
+    graph.add_edge(f, d, 26)
+    graph.add_edge(f, h, 250)
+
+    graph.add_edge(h, f, 73)
+    graph.add_edge(h, d, 73)
+    return graph
+
+
+def test_graph_depth_first_search_randomly_connected(create_graph_dfs_test):
+    graph = create_graph_dfs_test
+
+    expected = {'F', 'C', 'B', 'H', 'A', 'G', 'D'}
+
+    actual = graph.depth_first_search("A")
+
+    assert actual == expected
+
+
+
+def test_graph_depth_first_search_empty():
+    graph = Graph()
+
+    expected = {''}
+
+    actual = graph.depth_first_search('')
 
     assert actual == expected
