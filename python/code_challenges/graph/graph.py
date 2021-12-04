@@ -84,6 +84,7 @@ class Graph:
         Initalization for a hashmap to hold the vertices
         """
         self.__adjacency_list = {}
+        self.dfs_visited = set()
 
     def add_node(self, value):
         """
@@ -158,3 +159,11 @@ class Graph:
                     queue.enqueue(neighbor)
 
         return action(nodes)
+
+    def depth_first_search(self, start_vertex):
+        self.dfs_visited.add(start_vertex)
+
+        for neighbour in self.get_neigbors(start_vertex):
+            if neighbour not in self.dfs_visited:
+                self.depth_first_search(neighbour)
+        return self.dfs_visited
